@@ -5,16 +5,22 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><%= title %></title>
-    <link rel="stylesheet" href="/asserts/css/home.css">
+    <link rel="stylesheet" href="/css/layout.css">
+    <link rel="stylesheet" href="/css/header.css">
+    <link rel="stylesheet" href="/css/footer.css">
     <%- style %>
 </head>
 <body>
+    <main class="header">
     <%- include('_header'); %>
-
+</main>
+    <main id="layout-main">
     <%- body %>
+    </main>
 
+    <main class="footer">
     <%- include('_footer'); %>
-
+</main>
     <%- script %>
 </body>
 </html>
