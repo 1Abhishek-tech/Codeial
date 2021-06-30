@@ -1,0 +1,55 @@
+create folder codeial
+create index.js
+Run npm init(package.json file created)
+Run mkdir views controller models config routes 
+Run npm install express
+write code in index.js for(importing express ,app ,port ,listen)
+make shortcut of nodemon index.js as npm start by incluiding ("start": "nodemon index.js",) inside script of package.json
+Run git init
+create file .gitignore and write node_modules/  , /notes_backend.txt
+run git add .
+create index.js in routes and write inside it as (express,router,exports) and connect it with main index.js as app.use('/',require('./routes'))
+create home_controller.js in controller and write inside it as (module.exports.xyz=function(req,res){  })  and connect it with index.js of routes as const homeController = require('../controller/home_controller) , router.use('/',homeController.xyz)
+Run git add . and commit -dm" add a controller and a router for home"
+create users.js in routes and write inside it as (express,router,exports )  create users_controller.js in controller and write inside it as (module.exports.profile=fun..) and and connect it with users.js in routes as(const userController= require('../controller/users_controller') , router.get('/profile',userController.profile))  and connect users.js with index.js of routes as ( router.use('/users',require('./users')) )
+Run npm install ejs and update main index.js as (  app.set('view engine', 'ejs'), app.set('views','./views') )
+Create home.ejs in views and connect it with home_controller as (  return res.render('home',{       title: "Home" }))
+
+
+Authentication
+Create Users.js in models and and write inside it as (  userSchema,module.exports=User)
+
+Create user_sign_in.ejs and user_sign_up.ejs in views and connect it with users_controller of controller as (module.exports.SignUp =funct.....,module.exports.SignUp) And connect controller with user.js of routes as ( router.get('/sign-up',require(users_controller.SignUp)) , router.get('/sign-in',require(users_controller.SignIn))   )
+Create Sign Up and sign In form in user_sign_up.ejs and user_sign_in.ejs and connect it with users_controller.js of controller as ( module.exports.create = function(req,res){ )and use it in routes as ( )
+
+Run npm install cookie-parser and import it in index.js as(const cookieParser = require('cookie-parser).........) and edit in home_controller
+
+import user of models in users_controller.js as ( const User = requir('../models/user'))
+and Condition for SignUp- find email to check, in modeule.exports.create=function(req,res){ ....... User.findOne}
+After sign up , go to sign in page and if password and email correct go to profile page
+
+Passportjs
+(middleware is something which get executed before your request data reaches controller action )
+Run npm install passport,Run npm install passport-local
+Create passport-local-storage in config and write inside it as (  )
+Serialize and deserialize user
+Run npm install express-session and write in main index.js as ( const session = require('express-session') ,app.use(session({
+,app.use(passport.initialize()),app.use(passport.session()) )
+and go userController of controller and write in createsession as ( return res.redirect('/') )
+and go to routes to import passport, and write inside it as (  router.post('/createSession',passport.authenticate('lical',{failureRedirect:'/users/sign-in'},userController.createSession)
+//(we set up our passport authentication)the user is now getting an identity establish on the server and that identity is saved into the session cookie using express-session and communication establish bw browser and server
+write code in passport-local-startegy as ( passport.checkAuthentication = function(req,res,next){......)
+and go to routes and write  in profile as  (passport.checkAuthentication )
+//we are now able to check the authentication and if the user is able to view the profile page or not --
+//sign up and sign in pages available only when the user is log out
+Write code in signIn and SignUp of users_controller as (  if(req.isAuthenticated()){ return res.redirect('/users/profile')})
+//Problem 2 : session cookie gets reset everytime when server gets restart
+Run npm install connect-mongo and import it in  index.js as ( ) and write code in index.js
+
+Run npm install node-sass-middleware and import it in index.js and use it as ( app.use)
+
+Create posts.js in models and write code as ( mongoose, postSchema......)
+Create post form in home pade , and create posts_controller in controller as (import Post from posts, module.exports.create= function..)
+Create posts.js in routes and connect it with post_controller as (router.post('/create',postController.create) ) and connect post router with index router as (router.use('/posts',postController.create))
+//Lookat towards populating user of each post in post_controller as (Post.find({}),populate(user).exec(CALLBACK FUNCTION)) and write code in home.ejs as ( post.user.name)
+write code in home.ejs to avoid log out person to post as (<%  if(locals.user) {  %>  ) outside form and for avoiding posting for logout person by (fiddle)playing with html in inspect , write code in post.js of routes as (importing passport , passport.checkAuthentication)
