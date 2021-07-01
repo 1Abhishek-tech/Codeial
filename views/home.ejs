@@ -30,6 +30,9 @@
                             <li>
                                 <%= post.content %> <br>
                                     <small><b>-<%= post.user.name %></b></small>
+                                    <% if (locals.user && locals.user.id == post.user.id) { %>
+                                    <small><a href="/posts/destroy/<%= post.id %>">Delete Post</a></small>
+                                    <%} %>
                             </li>
                             <div class="post-comments">
                                 <h5>Comments</h5>
