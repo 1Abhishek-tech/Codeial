@@ -11,6 +11,7 @@ router.get('/',homeController.home)
 router.get('/about',homeController.about)
 router.use('/users',require('./users'))
 router.use('/posts',require('./posts'))
+router.use('/comments',require('./comments'))
 
 console.log(  `Router in routes : ${5+5}`)
 module.exports = router;

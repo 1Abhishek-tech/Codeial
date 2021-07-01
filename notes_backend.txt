@@ -52,4 +52,7 @@ Create posts.js in models and write code as ( mongoose, postSchema......)
 Create post form in home pade , and create posts_controller in controller as (import Post from posts, module.exports.create= function..)
 Create posts.js in routes and connect it with post_controller as (router.post('/create',postController.create) ) and connect post router with index router as (router.use('/posts',postController.create))
 //Lookat towards populating user of each post in post_controller as (Post.find({}),populate(user).exec(CALLBACK FUNCTION)) and write code in home.ejs as ( post.user.name)
-write code in home.ejs to avoid log out person to post as (<%  if(locals.user) {  %>  ) outside form and for avoiding posting for logout person by (fiddle)playing with html in inspect , write code in post.js of routes as (importing passport , passport.checkAuthentication)
+write code in home.ejs to avoid log out person to post, as (<%  if(locals.user) {  %>  ) outside form tag and for avoiding posting for logout person by (fiddle)playing with html in inspect , write code in post.js of routes as (importing passport , passport.checkAuthentication)
+Create comment.js in models and write inside it as ( ) and include comments Schema in post.js , create comment form in home.ejs and create comments_controller in controller and write inside it as ( ) and connect it with router
+//to display comments of each post in home , When we need to populate multiple models i.e, comments and its user , write code inside in home_controller as ( Post.find({}).populate('user').populate({path: 'comments',populate: {path: 'user'})  and code in home.ejs as (<% for (comment of post.comments){   ....comment.content ... comment.user.name)
+
