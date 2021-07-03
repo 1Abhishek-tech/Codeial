@@ -1,5 +1,5 @@
 const Post= require('../models/posts')
-const user = require('../models/user') 
+const User = require('../models/user') 
 module.exports.home = function(req,res){
     // return res.end('<h1> Express is up for work  </h1>')
     console.log(req.cookies)
@@ -21,14 +21,21 @@ module.exports.home = function(req,res){
     }).exec(function(err,posts){
    /*     if(err){console.log('Error in finding Post ') 
         return;}
-     */       return res.render('home',{
-                title: "Home",
-                posts: posts
-            });
+     */      User.find({},function(err,users){
+        return res.render('home',{
+            title: "Home",
+            posts: posts,
+            all_users: users
+        });
+     })
+   
     });
 };
+
+
+
 module.exports.about = function(req,res){
-    user.findOne({},function(err,users){
+    User.findOne({},function(err,users){
         return res.render('test',{
             title: 'Test Page || Posts',
             

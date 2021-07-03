@@ -16,7 +16,7 @@ const sassMiddleware = require('node-sass-middleware')
 
 app.use(sassMiddleware({
   src : './asserts/scss',
-  dest: './asserts/scss',
+  dest: './asserts/css',
   debug: true,
   outputStyle: 'extended',
   prefix: '/css'

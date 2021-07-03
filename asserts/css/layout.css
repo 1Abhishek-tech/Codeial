@@ -1,0 +1,8 @@
+.header {
+  background-color: aqua;
+  display: flex;
+  flex-direction: row; 
+padding: 10px;}
+
+body #layout-main {
+  height: 100%; }
