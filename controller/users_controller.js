@@ -1,13 +1,23 @@
 const User = require('../models/user')
 
-module.exports.profile=function(req,res){
+module.exports.profile=async function(req,res){
     // return res.end('<h1>User Profile </h1>')
-    User.findById(req.params.id,function(err,user){
+    // User.findById(req.params.id,function(err,user){
+    //     return res.render('user_profile',{
+    //         title:"Profile Page",
+    //         profile_user: user
+    //     })
+    // })
+    try{
+        let user = await User.findById(req.params.id)
         return res.render('user_profile',{
             title:"Profile Page",
             profile_user: user
         })
-    })
+    }catch(err){
+        console.log('Error',err)
+    }
+   
 }
 
 module.exports.post=function(req,res){
@@ -64,9 +74,12 @@ module.exports.create = function(req,res){
 }
 //Sign in and create a session for user
 module.exports.createSession = function(req,res){
+    req.flash('success','Logged in Successfully')
     return res.redirect('/')
 }
 module.exports.destroySession = function(req,res){
     req.logout()
+    req.flash('success','Logged out Successfully')
+
     res.redirect('/')
 }

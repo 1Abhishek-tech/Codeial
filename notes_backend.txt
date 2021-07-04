@@ -61,4 +61,9 @@ Now Distributing the code into partials , Create _post.ejs in views and paste co
 import users in home_controller to display all users as ( ...exec(function(err,posts){ User.find({},function(err,users){   res.render('home',{title, , all_users: users}})    })) and write code in home.ejs 
 Update routes in user.js as ( router.get('/profile/:id....)) and in userController.profile as (User.findById(.. return res.render('user_profile',{..  ... profile_user: user))  and edit user_profile.ejs as (profile_user.name)
 //Updating a user's profile, Made a update form in user_profile.ejs which is visible to user only when he is login with his that profile which need to update name and email 
-Create update module in users_controller.js 
+Create update module in users_controller.js and connect it with routes
+Use scss in home  page
+Rewrite code using Async /Await
+Establishing Flash Messages, Run npm install connect-flash
+Update index.js as ( const flash , app.use(flash()) ) flash msgs will setup in session cookie
+update createSession and destroySession in users_controller as (req.flash('Success','Logged in Successfully)) and create middleware.js (to take this flash req msgs and put them into res, we created a middleware) in config & import it in index.js , Access it in layout.ejs
