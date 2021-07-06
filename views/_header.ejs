@@ -1,6 +1,6 @@
 <header>
     <h1>Header Page</h1>
-  
+  <div class="heading">
     <ul>
         <% if(locals.user){   %>
             <li><a href="/users/profile/<%=user._id %>"><%= user.name %></a></li>
@@ -22,6 +22,10 @@
         <%} %>
 
     </ul>
+    <ul>
+        <a href="/">Home</a>
+    </ul>
+</div>
 
 
 

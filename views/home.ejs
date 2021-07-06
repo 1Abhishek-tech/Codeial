@@ -26,11 +26,13 @@
         <input type="submit" value="Post" />
       </form>
       <% } %>
-      <div class="posts-container">
+
+      <div id="posts-list-container">
        <h4>Recent Posts</h4>
+       <ul>
         <% for (post of posts ){%>
       <%- include('_post') -%>
-        <% } %>
+        <% } %></ul>
       </div>
     </section>
     <section id="user-friends">
@@ -40,5 +42,8 @@
         </p>  <% } %>
     </section>
   </div>
+
+  <script src="/js/home_post_comments.js" ></script>
+  <script src="/js/home_post.js"></script>
   </body>
 </html>

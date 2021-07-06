@@ -67,3 +67,6 @@ Rewrite code using Async /Await
 Establishing Flash Messages, Run npm install connect-flash
 Update index.js as ( const flash , app.use(flash()) ) flash msgs will setup in session cookie
 update createSession and destroySession in users_controller as (req.flash('Success','Logged in Successfully)) and create middleware.js (to take this flash req msgs and put them into res, we created a middleware) in config & import it in index.js , Access it in layout.ejs
+Include min.css min.js cdn link for noty flash msgs in layouts and wrote code inside script tag 
+Include cdnjs of jquery in layout.ejs & create home_post.js in js and and paste its link in home.ejs and create ajax request in home_post.js to upload post without reloaing of page
+deleting a post using ajax, for deleting we need two things ,one to be able to send the data to the controller to delete it and once we get a confirmation we remove that post from the dom the place where it is displayed right now 

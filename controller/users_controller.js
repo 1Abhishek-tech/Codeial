@@ -36,6 +36,7 @@ module.exports.update = function(req,res){
     if(req.user.id == req.params.id){
 // or User.findByIdAndUpdate(req.params.id,{name:req.body.name , email: req.body.email},)
 User.findByIdAndUpdate(req.user.id, req.body,function(err,user){
+    req.flash('success','Profile Updated Successfully');
     return res.redirect('back')
         })
     }else{

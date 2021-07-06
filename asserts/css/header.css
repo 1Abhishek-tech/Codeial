@@ -1,2 +1,6 @@
-.header {
-  padding-left: 10px; }
+.heading {
+  padding-left: 10px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  flex-wrap: wrap; }
