@@ -75,4 +75,6 @@ Run npm multer , updated upload form of user_profile.ejs updated User.js of mode
 
 API & JWT Authentication
 install postman , Create folder api in controller and routes , and in each api create v1 folder and then create index.js posts.js (in router) and create post_api.js in v1 in controller 
-Run npm install passport-jwt
+Run npm install passport-jwt, create passport-jwt-stratrgy.js in config
+Run npm install jsonwebtoken, create users_api.js in v1 api of controller
+Create users.js in v1 api of routes , put authentication on deletion of post including passport.authenticate('jwt' ,{session: false}) in post.js of v1 api of routes
