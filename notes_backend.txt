@@ -78,3 +78,19 @@ install postman , Create folder api in controller and routes , and in each api c
 Run npm install passport-jwt, create passport-jwt-stratrgy.js in config
 Run npm install jsonwebtoken, create users_api.js in v1 api of controller
 Create users.js in v1 api of routes , put authentication on deletion of post including passport.authenticate('jwt' ,{session: false}) in post.js of v1 api of routes
+
+create google oath consent screen in console.developers.google.com
+create passport-google-outh2-stratrgy.js in config
+Run npm install passport-google-oauth, Run npm install crypto
+
+Mailer
+Run npm install nodemailer
+Create nodemailer.js in config and create mailer in views
+Create mailer folder inside it create comments_mailer.js
+create new_comments.js in comments in mailer in views
+
+Delayed Jobs
+Run npm install kue
+mark window on linux option , download ubuntu , update and upgrade it using sudo apt-get update and sudo apt-get upgrade, install redis using sudo apt-get install redis-server, redis-cli-v
+Create kue.js in config and create comment_email_workers.js in workers
+
