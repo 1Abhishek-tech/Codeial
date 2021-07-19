@@ -1,10 +1,23 @@
-<li id="post-<%=post._id%>">
+<li id="post-<%=post._id%>"><p>
     <%= post.content %> <br />
     <small><b>-<%= post.user.name %></b></small>
     <% if (locals.user && locals.user.id == post.user.id) { %>
     <small><a class="delete-post-button" href="/posts/destroy/<%= post.id %>">Delete Post</a></small>
     <%} %>
   
+    <!-- display the likes of this post, if the user is logged in, then show the link to toggle likes, else, just show the count --> 
+    <br>
+    <small>
+        <% if (locals.user){ %>
+            <a class="toggle-like-button" data-likes="<%= post.likes.length %>" href="/likes/toggle/?id=<%=post._id%>&type=Post">
+                    <%= post.likes.length %> Likes
+            </a>
+        <% }else{ %>
+            <%= post.likes.length %> Likes
+        <% } %>
+    </small>
+
+  </p>
   <div class="post-comments">
     <h5>Comments</h5>
 
