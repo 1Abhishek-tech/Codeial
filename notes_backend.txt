@@ -94,5 +94,9 @@ Run npm install kue
 mark window on linux option , download ubuntu , update and upgrade it using sudo apt-get update and sudo apt-get upgrade, install redis using sudo apt-get install redis-server, redis-cli-v
 Create kue.js in config and create comment_email_workers.js in workers
 
-Likes + friends
+Likes 
 Create like.js in models and creating controller likes_controller.js and routes like.js and for render create ejs with ajax request
+
+Chat engine
+Run Nom install socket.io 
+Create chat_sockets in config and import require library in index.js also

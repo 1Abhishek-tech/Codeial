@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title><%= title %></title>
     <link rel="stylesheet" href="/css/home.css" />
+    <link rel="stylesheet" href="/css/chat_box.css">
+
   </head>
 
   <body>
@@ -41,8 +43,9 @@
             <a href="/users/profile/<%=u.id %>"><%=u.name%></a>
         </p>  <% } %>
     </section>
+    <%- include('_chat_box')   -%>
   </div>
-
+</body>
   <script src="/js/home_post_comments.js" ></script>
   <script src="/js/home_post.js"></script>
   <script src="js/toggle_likes.js"></script>
@@ -52,5 +55,12 @@
         let toggleLike = new ToggleLike(self);
     });
 </script>
-  </body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.1.3/socket.io.js"></script>
+<script src="/js/chat_engine.js"></script>
+<%  if(locals.user) { %>
+  <script>
+    new chatEngine('user-chat-box','<%=locals.user.email  %>')
+  </script>
+<% } %>
+  
 </html>

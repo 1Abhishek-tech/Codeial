@@ -1,4 +1,4 @@
-{
+ {  
   "name": "codeial",
   "version": "1.0.0",
   "description": "My all social web apps",
@@ -29,6 +29,7 @@
     "passport": "^0.4.1",
     "passport-google-oauth": "^2.0.0",
     "passport-jwt": "^4.0.0",
-    "passport-local": "^1.0.0"
+    "passport-local": "^1.0.0",
+    "socket.io": "^4.1.3"
   }
 }

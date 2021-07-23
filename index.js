@@ -6,6 +6,12 @@ const port = 8000;
 const expressLayouts = require('express-ejs-layouts')
 const db = require('./config/mongoose')
 
+app.use((req,res,next)=>{
+  res.setHeader('Acces-Control-Allow-Origin','*');
+  res.setHeader('Acces-Control-Allow-Methods','GET,POST,PUT,PATCH,DELETE');
+  res.setHeader('Acces-Contorl-Allow-Methods','Content-Type','Authorization');
+  next(); 
+})
 
 //used for session cookie and authentication password
 const session = require('express-session')
@@ -17,6 +23,12 @@ const MongoStore = require('connect-mongo')
 const sassMiddleware = require('node-sass-middleware')
 const flash = require('connect-flash')
 const customMware = require('./config/middleware')
+
+// Seting up chat server using socket.io
+const chatServer = require('http').Server(app)
+const chatSockets = require('./config/chat_sockets').chatSockets(chatServer)
+chatServer.listen(5000)
+console.log('Chat server : 5000')
 
 app.use(sassMiddleware({
   src : './asserts/scss',

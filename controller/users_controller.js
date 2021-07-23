@@ -87,6 +87,7 @@ if(req.isAuthenticated()){
 module.exports.create = function(req,res){
     if(req.body.password!= req.body.confirm_password){
         console.log("Password does not match")
+        res.flash('error','Password Mismatch');
         return res.redirect('back')
     }
     User.findOne({email: req.body.email},function(err,user){
@@ -99,6 +100,7 @@ module.exports.create = function(req,res){
             })
         }else{
             console.log('Email already registered')
+            req.flash('error','Email already registered');
             return res.redirect('back')
         }
     })
