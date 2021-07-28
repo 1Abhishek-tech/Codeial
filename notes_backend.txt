@@ -100,3 +100,14 @@ Create like.js in models and creating controller likes_controller.js and routes 
 Chat engine
 Run Nom install socket.io 
 Create chat_sockets in config and import require library in index.js also
+Create chat_engine in js of asserts and import it in home ejs
+
+Create environment.js in config  and create environment variable in pc 
+Run npm install morgan
+Run npm install rotating-file-stream
+
+
+Run npm install gulp-cli -g to set up gulp for development purpose
+and Run npm install gulp -D, npm install gulp-sass, npm install gulp-cssnamo, npm install gulp-rev
+Setup a folder named public
+

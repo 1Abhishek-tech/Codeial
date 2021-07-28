@@ -1,5 +1,7 @@
 //distributed but centrally accessed
 const express = require('express');
+const env = require('./config/environment')
+const logger = require('morgan')
 const cookieParser = require('cookie-parser')
 const app = express()
 const port = 8000;
@@ -22,21 +24,28 @@ const passportGoolgle = require('./config/passport-google-oauth2-stratrgy')
 const MongoStore = require('connect-mongo')
 const sassMiddleware = require('node-sass-middleware')
 const flash = require('connect-flash')
-const customMware = require('./config/middleware')
+const customMware = require('./config/middleware');
+const { config } = require('process');
 
 // Seting up chat server using socket.io
 const chatServer = require('http').Server(app)
 const chatSockets = require('./config/chat_sockets').chatSockets(chatServer)
 chatServer.listen(5000)
 console.log('Chat server : 5000')
+const path = require('path')
 
-app.use(sassMiddleware({
-  src : './asserts/scss',
-  dest: './asserts/css',
-  debug: true,
-  outputStyle: 'extended',
-  prefix: '/css'
-}))
+if(env.name == 'development'){
+  app.use(sassMiddleware({
+    // src : path.join( __dirname,env.asset_path,'scss') ,     //'./asserts/scss'
+    src : './asserts/scss' ,     //'./asserts/scss'
+    // dest:  path.join( __dirname,env.asset_path,'css')    ,   //'./asserts/css'
+    dest:  './asserts/css'   ,   //'./asserts/css'
+    debug: true,
+    outputStyle: 'extended',
+    prefix: '/css'
+  }))
+}
+
 //for older verson less than 4.16.0 you have to mention body parser
 // const bodyParser  = require('body-parser');
 // app.use(bodyParser.urlencoded());
@@ -50,9 +59,12 @@ app.use(express.json());
 
 // app.use(bodyParser()); 
 
-app.use(express.static('asserts'))
+// app.use(express.static('./asserts'))     //env.asset_path
+app.use(express.static('.'+  env.asset_path))     //env.asset_path
 //make the upload path available to the browser
 app.use('/uploads',express.static(__dirname + '/uploads'))
+
+app.use(logger(env.morgan.mode , env.morgan.options))
 
 app.use(expressLayouts);
 // extract style and scripts from sub pages into the layout
@@ -67,14 +79,14 @@ app.set('views','./views')
 app.use(session({
   name: 'Codeial',
   //TODO change the secret before deployment in the production mode
-  secret: 'something',
+  secret: env.session_cookie_key,
   saveUninitialized: false,
   resave: false,
   cookie:{
     maxAge:(1000*60*100)
   },
   store: MongoStore.create({
-    mongoUrl : 'mongodb://localhost/codeial_development',
+    mongoUrl : `mongodb://localhost/${env.db}`,
     mongooseConnection: db,
     autoRemove: 'disabled'
   },function(err){
