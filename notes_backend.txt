@@ -109,5 +109,5 @@ Run npm install rotating-file-stream
 
 Run npm install gulp-cli -g to set up gulp for development purpose
 and Run npm install gulp -D, npm install gulp-sass, npm install gulp-cssnamo, npm install gulp-rev
-Setup a folder named public
-
+Setup a folder named public inside it create asserts ,inside it folders as css, js and images
+Run npm install gulp-uglify-es , npm install gulp-imagemin

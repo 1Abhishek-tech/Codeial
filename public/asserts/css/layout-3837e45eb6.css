@@ -1,0 +1,10 @@
+body {
+  background-color: #85ec9f; }
+
+.header {
+  background-color: aqua;
+  display: flex;
+  flex-direction: row; }
+
+body #layout-main {
+  height: 100%; }
